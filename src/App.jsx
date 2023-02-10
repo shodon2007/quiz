@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
+  const [points, setPoints] = useState(0);
   const [questions, setQuestion] = useState([
     {
       text: 'Что значить \'use-strict\'',
@@ -24,11 +25,14 @@ const App = () => {
       select: 0,
     }
   ]);
-  function optionsClick() {
+  function optionsClick(n) {
     if (thisQuestion < questions.length - 1) {
       setThisQuiestion(thisQuestion + 1);
     } else {
       console.log('end')
+    }
+    if (questions[thisQuestion].options[n][1] == true) {
+      setPoints(points + 1);
     }
   }
   const [thisQuestion, setThisQuiestion] = useState(0);
