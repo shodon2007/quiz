@@ -3,6 +3,7 @@ import './App.css';
 
 const App = () => {
   const [points, setPoints] = useState(0);
+  const [thisQuestion, setThisQuiestion] = useState(0);
   const [questions, setQuestion] = useState([
     {
       text: 'Что значить \'use-strict\'',
@@ -15,12 +16,42 @@ const App = () => {
       select: 0,
     },
     {
-      text: 'Привет',
+      text: 'Что значить flex',
       options: [
-        ['Как', false],
-        ['Твои', true],
-        ['Прекрасные', false],
+        ['это флексить', false],
+        ['это найс то миит йу', false],
+        ['это свойсво display', true],
         ['Дела', false],
+      ],
+      select: 0,
+    },
+    {
+      text: 'когда началась первая мировая война',
+      options: [
+        ['1999', false],
+        ['1917', true],
+        ['1888', false],
+        ['2021', false],
+      ],
+      select: 0,
+    },
+    {
+      text: 'Что такое webpack',
+      options: [
+        ['Язык программирования', false],
+        ['Высокотехнологияная энергетическое устройство', false],
+        ['Незнаю', false],
+        ['Это сборщик пакетов', true],
+      ],
+      select: 0,
+    },
+    {
+      text: 'Когда был создан React',
+      options: [
+        ['1997', false],
+        ['2010', false],
+        ['2011', true],
+        ['2016', false],
       ],
       select: 0,
     }
@@ -35,7 +66,12 @@ const App = () => {
       setPoints(points + 1);
     }
   }
-  const [thisQuestion, setThisQuiestion] = useState(0);
+
+  function restart() {
+    setThisQuiestion(0);
+    setPoints(0);
+    document.querySelector('.quiz__modal').style.display = 'none';
+  }
   return (
     <>
       <div className='quiz__text'>
@@ -50,8 +86,8 @@ const App = () => {
       <div className="quiz__modal">
         <div className="modal__block">
           <div className="modal__title">Result</div>
-          <div className="modal__result">4 / 10</div>
-          <button className="modal__restart">restart</button>
+          <div className="modal__result">{points} / {questions.length}</div>
+          <button className="modal__restart" onClick={restart}>restart</button>
         </div>
       </div>
     </>
