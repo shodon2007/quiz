@@ -29,7 +29,7 @@ const App = () => {
     if (thisQuestion < questions.length - 1) {
       setThisQuiestion(thisQuestion + 1);
     } else {
-      console.log('end')
+      document.querySelector('.quiz__modal').style.display = 'flex'
     }
     if (questions[thisQuestion].options[n][1] == true) {
       setPoints(points + 1);
@@ -46,6 +46,13 @@ const App = () => {
         <div onClick={() => optionsClick(1)}>{questions[thisQuestion].options[1]}</div>
         <div onClick={() => optionsClick(2)}>{questions[thisQuestion].options[2]}</div>
         <div onClick={() => optionsClick(3)}>{questions[thisQuestion].options[3]}</div>
+      </div>
+      <div className="quiz__modal">
+        <div className="modal__block">
+          <div className="modal__title">Result</div>
+          <div className="modal__result">4 / 10</div>
+          <button className="modal__restart">restart</button>
+        </div>
       </div>
     </>
   );
