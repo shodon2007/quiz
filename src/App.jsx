@@ -4,9 +4,10 @@ import './App.css';
 const App = () => {
   const [points, setPoints] = useState(0);
   const [thisQuestion, setThisQuiestion] = useState(0);
-  const [questions, setQuestion] = useState([
+  let isEnd = false;
+  const questions = [
     {
-      text: 'Что значить \'use-strict\'',
+      text: 'Столица России',
       options: [
         ['Новосибирск', false],
         ['Москва', true],
@@ -55,12 +56,13 @@ const App = () => {
       ],
       select: 0,
     }
-  ]);
+  ];
   function optionsClick(n) {
     if (thisQuestion < questions.length - 1) {
       setThisQuiestion(thisQuestion + 1);
     } else {
-      document.querySelector('.quiz__modal').style.display = 'flex'
+      document.querySelector('.quiz__modal').style.display = 'flex';
+      isEnd = true;
     }
     if (questions[thisQuestion].options[n][1] == true) {
       setPoints(points + 1);
@@ -71,7 +73,14 @@ const App = () => {
     setThisQuiestion(0);
     setPoints(0);
     document.querySelector('.quiz__modal').style.display = 'none';
+    isEnd = false;
   }
+
+  document.addEventListener('keyup', (e) => {
+    if (e.key == 'Enter' && isEnd) {
+      restart();
+    }
+  });
   return (
     <>
       <div className='quiz__text'>
@@ -87,7 +96,7 @@ const App = () => {
         <div className="modal__block">
           <div className="modal__title">Result</div>
           <div className="modal__result">{points} / {questions.length}</div>
-          <button className="modal__restart" onClick={restart}>restart</button>
+          <div className="modal__restart" onClick={restart}>restart</div>
         </div>
       </div>
     </>
