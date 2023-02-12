@@ -13,6 +13,7 @@ body {
     padding: 50px 20px;
     width: 100vw;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 #root {
@@ -98,4 +99,14 @@ body {
 
 .modal__title {
     font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    .quiz__text {
+        font-size: 25px;
+    }
+
+    .quiz__options>div {
+        font-size: 20px;
+    }
 }
