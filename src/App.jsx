@@ -17,16 +17,6 @@ const App = () => {
       select: 0,
     },
     {
-      text: 'Что значить flex',
-      options: [
-        ['это флексить', false],
-        ['это найс то миит йу', false],
-        ['это свойсво display', true],
-        ['Дела', false],
-      ],
-      select: 0,
-    },
-    {
       text: 'когда началась первая мировая война',
       options: [
         ['1999', false],
